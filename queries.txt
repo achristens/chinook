@@ -944,9 +944,50 @@ chinook_development=# SELECT * FROM media_types WHERE name='Protected MPEG-4 vid
 
 
 3.  Find the least expensive track that has the genre "Electronica/Dance".
+    chinook_development=# SELECT * FROM genres WHERE name='Electronica/Dance';
+     id |       name        |        created_at         |         updated_at
+    ----+-------------------+---------------------------+----------------------------
+     15 | Electronica/Dance | 2008-05-25 12:13:42.91584 | 2014-01-29 22:14:08.916059
+    (1 row)
 
+    chinook_development=# SELECT MIN(unit_price) FROM tracks WHERE genre_id = 15;
+     min
+    ------
+     0.99
+    (1 row)
 
 
 4.  Find the all the artists whose names start with A.
+    chinook_development=# SELECT * FROM artists WHERE name LIKE 'A%';
+     id  |                                         name                                          |         created_at         |         updated_at
+    -----+---------------------------------------------------------------------------------------+----------------------------+----------------------------
+       3 | Aerosmith                                                                             | 2010-04-24 12:10:27.112898 | 2014-01-29 22:10:22.113197
+       5 | Alice In Chains                                                                       | 2010-03-17 04:57:44.11445  | 2014-01-29 22:10:22.11471
+       6 | Antônio Carlos Jobim                                                                  | 2008-02-20 09:42:01.115821 | 2014-01-29 22:10:22.11609
+       7 | Apocalyptica                                                                          | 2007-06-17 17:22:03.117226 | 2014-01-29 22:10:22.117495
+      26 | Azymuth                                                                               | 2011-07-06 01:06:45.132896 | 2014-01-29 22:10:22.133127
+     159 | Aquaman                                                                               | 2010-01-26 04:30:22.347071 | 2014-01-29 22:10:22.347307
+       1 | AC/DC                                                                                 | 2013-12-29 10:17:33.110489 | 2014-01-29 22:10:22.111012
+       4 | Alanis Morissette                                                                     | 2006-06-15 08:38:37.349889 | 2014-01-29 22:10:22.350141
+       8 | Audioslave                                                                            | 2005-10-31 17:39:42.351213 | 2014-01-29 22:10:22.351435
+     166 | Avril Lavigne                                                                         | 2011-07-20 07:13:19.360299 | 2014-01-29 22:10:22.360517
+     197 | Aisha Duo                                                                             | 2008-03-13 13:05:56.397849 | 2014-01-29 22:10:22.398099
+     202 | Aaron Goldberg                                                                        | 2009-02-25 06:12:10.402279 | 2014-01-29 22:10:22.402526
+     215 | Academy of St. Martin in the Fields Chamber Ensemble & Sir Neville Marriner           | 2006-12-17 09:16:04.413592 | 2014-01-29 22:10:22.413807
+     222 | Academy of St. Martin in the Fields, John Birch, Sir Neville Marriner & Sylvia McNair | 2006-10-07 18:25:07.420729 | 2014-01-29 22:10:22.420951
+     230 | Aaron Copland & London Symphony Orchestra                                             | 2009-05-05 01:44:30.43907  | 2014-01-29 22:10:22.439314
+     243 | Antal Doráti & London Symphony Orchestra                                              | 2005-08-14 21:42:30.451626 | 2014-01-29 22:10:22.451976
+     252 | Amy Winehouse                                                                         | 2005-10-21 15:27:45.461693 | 2014-01-29 22:10:22.461916
+     260 | Adrian Leaper & Doreen de Feis                                                        | 2013-06-19 00:55:12.468704 | 2014-01-29 22:10:22.468925
+       2 | Accept                                                                                | 2007-04-29 04:26:44.348404 | 2014-01-29 22:10:22.348709
+     161 | Aerosmith & Sierra Leone's Refugee Allstars                                           | 2012-10-20 20:10:32.555428 | 2014-01-29 22:10:22.555661
+     206 | Alberto Turco & Nova Schola Gregoriana                                                | 2011-03-23 02:31:01.569619 | 2014-01-29 22:10:22.569862
+     209 | Anne-Sophie Mutter, Herbert Von Karajan & Wiener Philharmoniker                       | 2013-04-03 15:04:38.580374 | 2014-01-29 22:10:22.580733
+     214 | Academy of St. Martin in the Fields & Sir Neville Marriner                            | 2008-10-12 18:09:43.58192  | 2014-01-29 22:10:22.582178
+     239 | Academy of St. Martin in the Fields, Sir Neville Marriner & William Bennett           | 2009-03-18 09:49:24.588641 | 2014-01-29 22:10:22.588875
+     257 | Academy of St. Martin in the Fields, Sir Neville Marriner & Thurston Dart             | 2011-01-05 12:55:55.592098 | 2014-01-29 22:10:22.592309
+      43 | A Cor Do Som                                                                          | 2006-07-26 01:42:48.501527 | 2014-01-29 22:10:22.501746
+    (26 rows)
+
 
 5.  Find all the tracks that belong to playlist 1.
