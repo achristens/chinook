@@ -491,3 +491,421 @@ irb(main):104:0> Track.where(genre_id: 15).where(media_type_id: 1)
            :updated_at => Wed, 29 Jan 2014 22:14:59 UTC +00:00
     }
 ]
+
+==========================================================================================
+Stretch: More Active Record Query Interface
+
+1. Find all the albums whose titles start with B.
+    irb(main):007:0> Album.where("title ILIKE ?","B%")
+      Album Exists (4.3ms)  SELECT  1 AS one FROM "albums" WHERE (title ILIKE 'B%') LIMIT $1  [["LIMIT", 1]]
+      Album Load (1.2ms)  SELECT "albums".* FROM "albums" WHERE (title ILIKE 'B%')
+    [
+        [ 0] #<Album:0x007f826e05a490> {
+                    :id => 5,
+             :artist_id => 3,
+                 :title => "Big Ones",
+            :created_at => Fri, 22 Jun 2012 01:05:10 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 1] #<Album:0x007f826e051098> {
+                    :id => 16,
+             :artist_id => 12,
+                 :title => "Black Sabbath",
+            :created_at => Fri, 06 May 2011 07:06:52 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 2] #<Album:0x007f826e050ee0> {
+                    :id => 17,
+             :artist_id => 12,
+                 :title => "Black Sabbath Vol. 4 (Remaster)",
+            :created_at => Thu, 11 Oct 2007 08:05:23 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 3] #<Album:0x007f826e050d78> {
+                    :id => 18,
+             :artist_id => 13,
+                 :title => "Body Count",
+            :created_at => Thu, 08 Feb 2007 22:32:53 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 4] #<Album:0x007f826e050be8> {
+                    :id => 31,
+             :artist_id => 23,
+                 :title => "Bongo Fury",
+            :created_at => Mon, 04 Nov 2013 07:50:09 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 5] #<Album:0x007f826e050a80> {
+                    :id => 93,
+             :artist_id => 89,
+                 :title => "Blue Moods",
+            :created_at => Wed, 19 Oct 2005 01:18:51 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 6] #<Album:0x007f826e050918> {
+                    :id => 127,
+             :artist_id => 22,
+                 :title => "BBC Sessions [Disc 2] [Live]",
+            :created_at => Sun, 04 Jul 2010 10:45:46 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 7] #<Album:0x007f826e050788> {
+                    :id => 2,
+             :artist_id => 2,
+                 :title => "Balls to the Wall",
+            :created_at => Sun, 01 Sep 2013 09:10:31 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 8] #<Album:0x007f826e050620> {
+                    :id => 145,
+             :artist_id => 103,
+                 :title => "Barulhinho Bom",
+            :created_at => Sun, 24 Nov 2013 13:30:55 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [ 9] #<Album:0x007f826e0504b8> {
+                    :id => 148,
+             :artist_id => 50,
+                 :title => "Black albums",
+            :created_at => Fri, 22 Apr 2005 22:31:52 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [10] #<Album:0x007f826e0502d8> {
+                    :id => 171,
+             :artist_id => 114,
+                 :title => "Blizzard of Ozz",
+            :created_at => Thu, 22 Dec 2005 06:04:40 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [11] #<Album:0x007f826e050198> {
+                    :id => 193,
+             :artist_id => 127,
+                 :title => "Blood Sugar Sex Magik",
+            :created_at => Tue, 28 Jan 2014 17:04:49 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [12] #<Album:0x007f826e050058> {
+                    :id => 194,
+             :artist_id => 127,
+                 :title => "By The Way",
+            :created_at => Sat, 04 Jun 2011 03:22:29 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [13] #<Album:0x007f826e050a30> {
+                    :id => 212,
+             :artist_id => 139,
+                 :title => "Beyond Good And Evil",
+            :created_at => Fri, 04 Dec 2009 11:57:17 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [14] #<Album:0x007f826e051610> {
+                    :id => 227,
+             :artist_id => 147,
+                 :title => "Battlestar Galactica, Season 3",
+            :created_at => Thu, 13 Sep 2012 06:18:28 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [15] #<Album:0x007f826e052088> {
+                    :id => 234,
+             :artist_id => 150,
+                 :title => "B-Sides 1980-1990",
+            :created_at => Thu, 19 Oct 2006 00:27:19 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [16] #<Album:0x007f826e052a88> {
+                    :id => 276,
+             :artist_id => 210,
+                 :title => "Bach: Violin Concertos",
+            :created_at => Fri, 13 May 2011 14:12:24 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [17] #<Album:0x007f826e053a50> {
+                    :id => 278,
+             :artist_id => 212,
+                 :title => "Bach: The Cello Suites",
+            :created_at => Fri, 21 Sep 2012 15:21:14 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [18] #<Album:0x007f826e04bda0> {
+                    :id => 284,
+             :artist_id => 218,
+                 :title => "Beethoven: Symhonies Nos. 5 & 6",
+            :created_at => Sun, 10 Jul 2011 08:54:10 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [19] #<Album:0x007f826e04bb98> {
+                    :id => 297,
+             :artist_id => 231,
+                 :title => "Bach: Toccata & Fugue in D Minor",
+            :created_at => Wed, 13 Jun 2007 16:32:50 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [20] #<Album:0x007f826e04ba08> {
+                    :id => 312,
+             :artist_id => 245,
+                 :title => "Berlioz: Symphonie Fantastique",
+            :created_at => Fri, 20 Aug 2010 07:38:36 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [21] #<Album:0x007f826e04b8c8> {
+                    :id => 313,
+             :artist_id => 246,
+                 :title => "Bizet: Carmen Highlights",
+            :created_at => Fri, 15 Apr 2005 19:07:08 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [22] #<Album:0x007f826e04b738> {
+                    :id => 321,
+             :artist_id => 252,
+                 :title => "Back to Black",
+            :created_at => Wed, 28 Mar 2012 06:23:40 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [23] #<Album:0x007f826e04b530> {
+                    :id => 324,
+             :artist_id => 254,
+                 :title => "Beethoven: Symphony No. 6 'Pastoral' Etc.",
+            :created_at => Wed, 25 Feb 2009 07:03:10 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [24] #<Album:0x007f826e04b378> {
+                    :id => 325,
+             :artist_id => 255,
+                 :title => "Bartok: Violin & Viola Concertos",
+            :created_at => Fri, 17 Feb 2012 10:08:15 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [25] #<Album:0x007f826e04b170> {
+                    :id => 327,
+             :artist_id => 257,
+                 :title => "Bach: Orchestral Suites Nos. 1 - 4",
+            :created_at => Sun, 11 Oct 2009 17:16:43 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [26] #<Album:0x007f826e04b030> {
+                    :id => 12,
+             :artist_id => 9,
+                 :title => "BackBeat Soundtrack",
+            :created_at => Tue, 27 Oct 2009 18:46:03 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [27] #<Album:0x007f826e04aec8> {
+                    :id => 30,
+             :artist_id => 22,
+                 :title => "BBC Sessions [Disc 1] [Live]",
+            :created_at => Wed, 06 Aug 2008 16:50:00 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [28] #<Album:0x007f826e04ab08> {
+                    :id => 97,
+             :artist_id => 90,
+                 :title => "Brave New World",
+            :created_at => Mon, 10 Apr 2006 20:54:43 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [29] #<Album:0x007f826e04a978> {
+                    :id => 226,
+             :artist_id => 147,
+                 :title => "Battlestar Galactica: The Story So Far",
+            :created_at => Fri, 30 Mar 2012 19:46:32 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [30] #<Album:0x007f826e04a810> {
+                    :id => 253,
+             :artist_id => 158,
+                 :title => "Battlestar Galactica (Classic), Season 1",
+            :created_at => Mon, 21 Apr 2008 00:35:13 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:03 UTC +00:00
+        },
+        [31] #<Album:0x007f826e04a630> {
+                    :id => 277,
+             :artist_id => 211,
+                 :title => "Bach: Goldberg Variations",
+            :created_at => Sat, 04 Mar 2006 19:39:54 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:03 UTC +00:00
+        },
+        [32] #<Album:0x007f826e04a478> {
+                    :id => 170,
+             :artist_id => 114,
+                 :title => "Bark at the Moon (Remastered)",
+            :created_at => Mon, 24 Aug 2009 05:08:48 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:02 UTC +00:00
+        },
+        [33] #<Album:0x007f826e04a2e8> {
+                    :id => 300,
+             :artist_id => 234,
+                 :title => "Bach: The Brandenburg Concertos",
+            :created_at => Sun, 12 Jul 2009 06:28:56 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:03 UTC +00:00
+        },
+        [34] #<Album:0x007f826e04a130> {
+                    :id => 304,
+             :artist_id => 238,
+                 :title => "Beethoven Piano Sonatas: Moonlight & Pastorale",
+            :created_at => Fri, 26 Nov 2004 05:20:41 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:14:03 UTC +00:00
+        }
+    ]
+
+2. Find the all the artists whose names start with A.
+    irb(main):008:0> Artist.where("name ILIKE ?","A%")
+      Artist Exists (1.4ms)  SELECT  1 AS one FROM "artists" WHERE (name ILIKE 'A%') LIMIT $1  [["LIMIT", 1]]
+      Artist Load (1.2ms)  SELECT "artists".* FROM "artists" WHERE (name ILIKE 'A%')
+    [
+        [ 0] #<Artist:0x007f826dad36c0> {
+                    :id => 3,
+                  :name => "Aerosmith",
+            :created_at => Sat, 24 Apr 2010 12:10:27 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 1] #<Artist:0x007f826dad3418> {
+                    :id => 5,
+                  :name => "Alice In Chains",
+            :created_at => Wed, 17 Mar 2010 04:57:44 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 2] #<Artist:0x007f826dad31e8> {
+                    :id => 6,
+                  :name => "Antônio Carlos Jobim",
+            :created_at => Wed, 20 Feb 2008 09:42:01 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 3] #<Artist:0x007f826dad2f90> {
+                    :id => 7,
+                  :name => "Apocalyptica",
+            :created_at => Sun, 17 Jun 2007 17:22:03 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 4] #<Artist:0x007f826dad2db0> {
+                    :id => 26,
+                  :name => "Azymuth",
+            :created_at => Wed, 06 Jul 2011 01:06:45 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 5] #<Artist:0x007f826dad2b08> {
+                    :id => 159,
+                  :name => "Aquaman",
+            :created_at => Tue, 26 Jan 2010 04:30:22 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 6] #<Artist:0x007f826dad2900> {
+                    :id => 1,
+                  :name => "AC/DC",
+            :created_at => Sun, 29 Dec 2013 10:17:33 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 7] #<Artist:0x007f826dad2798> {
+                    :id => 4,
+                  :name => "Alanis Morissette",
+            :created_at => Thu, 15 Jun 2006 08:38:37 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 8] #<Artist:0x007f826dad2630> {
+                    :id => 8,
+                  :name => "Audioslave",
+            :created_at => Mon, 31 Oct 2005 17:39:42 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [ 9] #<Artist:0x007f826dad24f0> {
+                    :id => 166,
+                  :name => "Avril Lavigne",
+            :created_at => Wed, 20 Jul 2011 07:13:19 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [10] #<Artist:0x007f826dad2338> {
+                    :id => 197,
+                  :name => "Aisha Duo",
+            :created_at => Thu, 13 Mar 2008 13:05:56 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [11] #<Artist:0x007f826dad2180> {
+                    :id => 202,
+                  :name => "Aaron Goldberg",
+            :created_at => Wed, 25 Feb 2009 06:12:10 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [12] #<Artist:0x007f826dad1f78> {
+                    :id => 215,
+                  :name => "Academy of St. Martin in the Fields Chamber Ensemble & Sir Neville Marriner",
+            :created_at => Sun, 17 Dec 2006 09:16:04 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [13] #<Artist:0x007f826dad1aa0> {
+                    :id => 222,
+                  :name => "Academy of St. Martin in the Fields, John Birch, Sir Neville Marriner & Sylvia McNair",
+            :created_at => Sat, 07 Oct 2006 18:25:07 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [14] #<Artist:0x007f826dad1960> {
+                    :id => 230,
+                  :name => "Aaron Copland & London Symphony Orchestra",
+            :created_at => Tue, 05 May 2009 01:44:30 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [15] #<Artist:0x007f826dad17d0> {
+                    :id => 243,
+                  :name => "Antal Doráti & London Symphony Orchestra",
+            :created_at => Sun, 14 Aug 2005 21:42:30 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [16] #<Artist:0x007f826dad1618> {
+                    :id => 252,
+                  :name => "Amy Winehouse",
+            :created_at => Fri, 21 Oct 2005 15:27:45 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [17] #<Artist:0x007f826dad1460> {
+                    :id => 260,
+                  :name => "Adrian Leaper & Doreen de Feis",
+            :created_at => Wed, 19 Jun 2013 00:55:12 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [18] #<Artist:0x007f826dad12f8> {
+                    :id => 2,
+                  :name => "Accept",
+            :created_at => Sun, 29 Apr 2007 04:26:44 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [19] #<Artist:0x007f826dad1078> {
+                    :id => 161,
+                  :name => "Aerosmith & Sierra Leone's Refugee Allstars",
+            :created_at => Sat, 20 Oct 2012 20:10:32 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [20] #<Artist:0x007f826dad0e98> {
+                    :id => 206,
+                  :name => "Alberto Turco & Nova Schola Gregoriana",
+            :created_at => Wed, 23 Mar 2011 02:31:01 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [21] #<Artist:0x007f826dad0c68> {
+                    :id => 209,
+                  :name => "Anne-Sophie Mutter, Herbert Von Karajan & Wiener Philharmoniker",
+            :created_at => Wed, 03 Apr 2013 15:04:38 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [22] #<Artist:0x007f826dad0ab0> {
+                    :id => 214,
+                  :name => "Academy of St. Martin in the Fields & Sir Neville Marriner",
+            :created_at => Sun, 12 Oct 2008 18:09:43 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [23] #<Artist:0x007f826dad0830> {
+                    :id => 239,
+                  :name => "Academy of St. Martin in the Fields, Sir Neville Marriner & William Bennett",
+            :created_at => Wed, 18 Mar 2009 09:49:24 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [24] #<Artist:0x007f826dad0560> {
+                    :id => 257,
+                  :name => "Academy of St. Martin in the Fields, Sir Neville Marriner & Thurston Dart",
+            :created_at => Wed, 05 Jan 2011 12:55:55 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        },
+        [25] #<Artist:0x007f826dad0380> {
+                    :id => 43,
+                  :name => "A Cor Do Som",
+            :created_at => Wed, 26 Jul 2006 01:42:48 UTC +00:00,
+            :updated_at => Wed, 29 Jan 2014 22:10:22 UTC +00:00
+        }
+    ]
